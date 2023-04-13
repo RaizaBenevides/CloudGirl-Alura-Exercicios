@@ -12,13 +12,33 @@ botaoAdicionar.addEventListener("click", function(event){
     //criando a tr e a td pra cada paciente:
     var pacienteTr = montaTr(paciente);
 
+    var erros = validaPaciente (paciente);
+
+    if (erros.length > 0) {
+        exibeMensagensDeErro (erros);
+        return; //aqui ele retorna e não executa os comandos abaixo para não adicionar o paciente na tabela
+    }
+
     //adicionando o paciente na tabela
     var tabela = document.querySelector("#tabela-pacientes");
 
     tabela.appendChild(pacienteTr); //levamos a tr que criamos para a tabela que já existia no html
 
     form.reset (); //para limpar os campos de preenchimento após apertar o botão
+    var mensagensErro = document.querySelector ("#mensagens-erro");
+    mensagensErro.innerHTML = " "; //obtemos o conteúdo interno da html, nesse caso, da ul mansagens-erro e substitui por vazio, limpando os textos
 });
+
+function exibeMensagensDeErro (erros) {
+    var ul = document.querySelector ("#mensagens-erro");
+    ul.innerHTML = " "; //limpar a ul
+    
+    erros.forEach(function (erro) { //mesma coisa do for, pecorre cada elemento do meu array e faz alguma coisa (function)
+        var li = document.createElement ("li");
+        li.textContent = erro;
+        ul.appendChild(li); //colocando a li dentro da ul
+    });
+}
 
 function obtemPacienteDoFormulario (form) {
     
@@ -62,6 +82,37 @@ function montaTd (dado, classe) {
     return td;
 }
 
+function validaPaciente (paciente) {
+    
+    var erros = [];
+
+    if (paciente.nome.length == 0) {
+        erros.push("O nome não pode ser em branco");
+    }
+    
+    if (!validaPeso (paciente.peso)) { //validaPeso está no arquivo "calcula-imc"
+        erros.push("Peso é inválido!"); //empurra para o array 
+    }
+
+    if (!validaAltura (paciente.altura)) {
+        erros.push("Altura é inválida!");
+    }
+
+    if (paciente.gordura.length == 0) {
+        erros.push("A gordura não pode ser em branco");
+    }
+
+    if (paciente.peso.length == 0) {
+        erros.push("O peso não pode ser em branco");
+    }
+
+    if (paciente.altura.length == 0) {
+        erros.push("A altura não pode ser em branco");
+    }
+
+    return erros; //retorna com as strings para o array
+}
+
 /*
 Objetos:
 
@@ -83,4 +134,19 @@ xicara.peso // 125
 xicara.tipo // chá
 xicara.modelo // undefined, este objeto não possui a propriedade modelo
 
+innerHTML:
+
+Com a propriedade innerHTML, podemos editar obter o conteúdo HTML (HTML interno) de um elemento.
+Para editar o HTML interno, como o innerHTML é uma propriedade, utilizamos um sinal de igual (=). Fazemos:
+
+ObjetoDeUmElementoHTML.innerHTML = "Novo conteúdo"
+
+E para obter o HTML interno, fazemos:
+
+ObjetoDeUmElementoHTML.innerHTML
+
+O seu retorno será todo o conteúdo HTML, tanto tags, atributos, classes, etc, no formato de uma String. Outro ex:
+
+var nome = document.querySelector("#nome");
+nome.innerHTML = "Meu nome é Rafael";
 */

@@ -15,10 +15,10 @@ for (var i = 0; i < pacientes.length; i++) { //paciente.length é o tamnaho da l
 
     var tdImc = paciente.querySelector(".info-imc");
 
-    var pesoEhValido = true;
-    var alturaEhvalida = true;
+    var pesoEhValido = validaPeso (peso); //true ou false
+    var alturaEhvalida = validaAltura (altura);
 
-    if(peso <= 0 || peso >= 1000) {
+    if (!pesoEhValido) { // ! = negação (se o peso não é válido) //se a variável pesoEhValido for false, entra nesse if
         console.log("Peso inválido");
         var pesoEhValido = false;
         tdImc.textContent = "Peso inválido!";
@@ -27,7 +27,7 @@ for (var i = 0; i < pacientes.length; i++) { //paciente.length é o tamnaho da l
         paciente.classList.add("paciente-invalido"); //criando classe no js, para mudarmos a cor pelo arquivo css
     }
 
-    if (altura <= 0 || altura >= 3.00 ) {
+    if (!alturaEhvalida) {
         console.log("Altura inválida");
         var alturaEhvalida = false;
         tdImc.textContent = "Altura inválida!";
@@ -43,6 +43,22 @@ for (var i = 0; i < pacientes.length; i++) { //paciente.length é o tamnaho da l
 }
 
 //colocamos o código do formulário em um arquivo separado chamado form.js
+
+function validaPeso (peso) {
+    if (peso >= 0 && peso < 1000) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function validaAltura (altura) {
+    if (altura >=0 && altura <= 3.0) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
 function calculaImc (peso,altura) {
     var imc = 0;
