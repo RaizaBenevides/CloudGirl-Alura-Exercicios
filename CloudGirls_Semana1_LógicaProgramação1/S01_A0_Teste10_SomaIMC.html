@@ -1,0 +1,47 @@
+<meta charset = "UTF-8">
+
+<script>
+
+	function pulaLinha() {
+		document.write("<br><br>");
+	}
+
+	function mostra(frase) {
+		document.write(frase);
+		pulaLinha();
+	}
+
+	/* Forma possível, mas é trabalhosa, além de não dá certo para somente uma pessoa
+
+	function calculaImc(peso1, altura1, peso2, altura2) {
+		var imc1 = Math.round (peso1 / (altura1 * altura1));
+		var imc2 = Math.round (peso2 / (altura2 * altura2));
+		var somaImc = imc1 + imc2;
+		mostra("A soma dos IMCs é: " + somaImc);
+	}
+
+	calculaImc(46, 1.54, 80, 1.80);
+	*/
+
+	function calculaImc(peso, altura) {
+		
+		/* Outra forma de fazer, mas a seguinte fica mais simples:
+		var imc = Math.round (peso / (altura * altura));
+		return imc; 
+		*/
+		return Math.round (peso / (altura * altura));
+
+	}
+
+	/* Outra forma de se fazer:
+	var imcPessoa1 = calculaImc(46, 1.54);
+	var imcPessoa2 = calculaImc(80,1.8);
+	var totalImc = imcPessoa1 + imcPessoa2
+	*/
+
+	var totalImc = calculaImc(46, 1.54) + calculaImc(80,1.8);
+
+	mostra("A soma dos imc's é: " + totalImc);
+
+
+</script>

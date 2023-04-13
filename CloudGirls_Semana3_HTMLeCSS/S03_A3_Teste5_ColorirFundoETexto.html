@@ -1,0 +1,55 @@
+<!--
+Colorindo no css:
+Podemos escrever a cor em inglês; Ex:
+    red
+Podemos usar hexadecimal; 
+    Composto por 6 espaços, os dois primeiros representam a cor red, os dois seguintes a cor green e os dois últimos a cor blue;
+    Varia de 0 a 9 e de A a F;
+    0 representa a ausência de cor e o F o máximo de cor; Ex:
+    Preto = #000000
+    Branco = #FFFFFF
+    Vermelho = #FF0000
+    Verde = #00FF00
+    Azul = #0000FF
+Podemos usar RGB; Ex:
+    Preto = rgb (0,0,0)
+    Branco = rgb (255,255,255)
+    Vermelho = rgb (255,0,0)
+    Verde = rgb (0,255,0)
+    Azul = rgb (0,0,255)
+-->
+
+<!DOCTYPE html>
+
+<html lang="pt-br"> 
+
+    <head> 
+        <meta charset = "UTF-8"> 
+        <title> Barbearia Alura </title>
+        <link rel="stylesheet" href="style.css">  
+    </head>
+
+    <body> 
+        <h1 style="text-align: center"> Sobre a Barbearia Alura </h1>
+        <!-- retiramos o background do título para aplicar no arquivo externo em todo o conteúdo do body.
+        Dessa forma o fundo fica todo cinza sem a divisão de marcas brancas e cinzas -->
+        <p> Localizada no coração da cidade a <strong>Barbearia Alura</strong> traz para o mercado 
+            o que há de melhor para o seu cabelo e barba. 
+            Fundada em 2019, a Barbearia Alura já é destaque na cidade e conquista novos clientes 
+            a cada dia. </p>
+        
+        <p style="font-size: 20px"><em>Nossa missão é:<strong>"Proporcionar auto-estima e qualidade de vida aos clientes"</strong>.</em></p>
+       <!-- Vamos colocar a tag strong com cor no arquivo externo, usando a propriedade color.
+        Notar que podemos usar para colorir hexadecimais ou o nome da cor em inglês.
+        Notar que todas as strong ficaram vermelhas, mas eu quero somente nessa strong, como fazer?
+        Pode colocar inline OU no arquivo externo dessa forma:
+            em strong {
+            color: red;
+            } 
+        -->
+        <p> Oferecemos profissionais experientes e antenados às mudanças no mundo da moda. 
+            O atendimento possui padrão de excelência e agilidade, garantindo qualidade e satisfação 
+            dos nossos clientes. </p>
+    </body>
+    
+</html>

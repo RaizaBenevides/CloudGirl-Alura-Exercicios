@@ -1,0 +1,60 @@
+<meta charset="UTF-8">
+
+<script>
+
+    function pulaLinha() {
+
+        document.write("<br>");
+        document.write("<br>");
+    }
+
+    function mostra(frase) {
+
+        document.write(frase);
+        pulaLinha();
+    }
+
+/* 
+
+Fazendo a tabuada de 7:
+
+    var multiplicador = 1
+    
+    while (multiplicador <= 10) {
+        mostra (7 * multiplicador);
+        multiplicador = multiplicador + 1
+    }
+
+    mostra ("FIM");
+
+...
+
+Comando "for" é parecido com o "while" (faz a mesma coisa de forma mais compacta). Dentro do "for" temos 3 espaços "for (1;2;3)" e eles são preenchidos com as informações equivalentes do while (comparar com o exemplo acima do while).
+
+    for (var multiplicador = 1 ; multiplicador <= 10 ; multiplicador = multiplicador + 1) { 
+        mostra (7 * multiplicador);
+    }
+ 
+    mostra ("FIM");
+
+...
+
+Se quisermos escrever:
+
+    multiplicador = 0;
+    multiplicador = multiplicador + 1;
+
+Poderíamos simplesmente escrever 
+
+    multiplicador = 0;
+    multiplicador ++; (é um atalho pra sempre incrementar +1 na variável, uma forma de escrever menos)
+
+*/
+
+    for (var multiplicador = 1 ; multiplicador <= 10 ; multiplicador ++) { 
+        mostra (7 * multiplicador);
+    }
+    
+    mostra ("FIM");
+
+</script>

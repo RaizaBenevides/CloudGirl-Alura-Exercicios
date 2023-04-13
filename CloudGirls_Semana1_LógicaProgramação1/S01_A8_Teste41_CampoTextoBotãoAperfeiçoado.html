@@ -1,0 +1,33 @@
+<meta charset="UTF-8">
+
+<input/>
+<button>Compare com o meu segredo</button>
+
+<script>
+
+    var segredo = Math.round (Math.random() * 10); //para o número gerado ser aleatório e inteiro (arredondado)
+
+    var input = document.querySelector("input"); 
+    input.focus(); //para dar um destaque na caixa de entrada(input). Aparece uma borda preta mais grossa.
+
+    function verifica() {
+
+        if (input.value == segredo) { 
+
+            alert ("Você ACERTOU!");
+        
+        } else {
+
+            alert ("Você ERROU!");
+        }
+
+        input.value = ""; //joguei um valor em branco para o botão após acertamos ou errarmos (botãofica branco após o uso).
+        input.focus(); //para dar um destaque na caixa de entrada(input). Aparece uma borda preta mais grossa.
+    }
+
+    var button = document.querySelector ("button");
+    button.onclick = verifica; 
+
+
+</script>
+

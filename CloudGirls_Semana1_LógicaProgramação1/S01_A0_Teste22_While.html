@@ -1,0 +1,66 @@
+<meta charset="UTF-8">
+
+<script>
+
+    function pulaLinha() {
+
+        document.write("<br><br>");
+    }
+
+    function mostra(frase) {
+
+        document.write(frase);
+        pulaLinha();
+    }
+
+    /*
+
+    var anoCopa = 1930;
+
+    alert ("Teve copa em " + anoCopa);
+    anoCopa = anoCopa + 4;
+
+    ...
+
+    Forma trabalhosa de fazer seria essa: repetir os alerts infinitamente alterando o valor da variável inicial.
+
+    alert ("Teve copa em " + anoCopa);
+    anoCopa = anoCopa + 4;
+
+    alert ("Teve copa em " + anoCopa);
+    anoCopa = anoCopa + 4;
+
+    alert ("Teve copa em " + anoCopa);
+    anoCopa = anoCopa + 4;
+
+    ...
+
+    Para repetir os alerts podemos usar dessa forma. O while funciona (infinitamente) enquanto receber true , e não funciona se receber false. Neste caso ele vai repetir infinitamente e teremos impedir que o crome mostre mais caixas de diálogos e fechar a aba do navegador. Se fosse o mostra ao invés do alert, iria mostrar na tela os anos infinitamente, o que poderia travar o computador (ter cuidado).
+
+    while (true) { 
+        alert ("Teve copa em " + anoCopa);
+        anoCopa = anoCopa + 4;
+    }
+
+    ...
+
+    Para não funcionar infinitamente, podemos colocar uma condição para o while parar, então, assim como o if, o while vai funcionar enquanto essa condição for verdadeira, quando não for, vai parar.
+
+    while (anoCopa <= 2016) { 
+        alert ("Teve copa em " + anoCopa);
+        anoCopa = anoCopa + 4;
+    }
+
+    */
+
+    var anoLimite = parseInt (prompt ("Entre com a data limite."));
+    var anoCopa = 1930;
+
+    while (anoCopa <= anoLimite) { 
+        mostra ("Teve copa em " + anoCopa);
+        anoCopa = anoCopa + 4;
+    }
+
+    mostra ("FIM");
+
+</script>

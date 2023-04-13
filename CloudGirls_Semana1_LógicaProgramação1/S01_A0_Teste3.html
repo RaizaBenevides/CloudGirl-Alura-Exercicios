@@ -1,0 +1,21 @@
+<meta charset="UTF-8">
+
+<script>
+
+    function pulaLinha() {
+        document.write("<br>");
+    }
+
+    function mostra (frase) {
+        document.write (frase);
+        pulaLinha();
+    }
+
+    var anoInicial = 1500;
+    var anoAtual = 2016;
+    var diferençaAnos = anoAtual - anoInicial;
+    var quatidadeGerações = Math.round (diferençaAnos / 28)
+
+    mostra ("Passaram-se " + quatidadeGerações + " gerações");
+
+</script>

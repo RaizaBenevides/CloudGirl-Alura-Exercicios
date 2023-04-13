@@ -1,0 +1,56 @@
+<!--
+Existem três formas de configurarmos o CSS. 
+
+A que fizemos até agora foi a primeira delas, a chamada CSS inline. 
+Ou seja, na linha onde temos nossa tag, adicionamos a propriedade do CSS. 
+
+A segunda é incluindo a estilização em cada tag na propriedade style, no mesmo arquivo html.
+Colocando na head uma configuração <style> para todos os paragrafos, por exemplo.
+
+A terceira forma é através de um arquivo externo. 
+Para que a estilização seja aplicada de forma correta, fique atento:
+    Ao nome do arquivo e sua extensão
+        Geralmente, chamamos o arquivo que contem os estilos de "style.css". 
+        Observe que este arquivo possui a extensão .css.
+    Link do CSS no head
+        Para utilizar a estilização do arquivo style.css no index.html, precisamos incluir no head o 
+        seguinte código:
+        <link rel="stylesheet" href="style.css">
+-->
+
+<!DOCTYPE html>
+
+<html lang="pt-br"> 
+
+    <head> 
+        <meta charset = "UTF-8"> 
+        <title> Barbearia Alura </title>
+        <style>
+            p { 
+                text-align: center
+            }
+        </style>
+        <!-- Segunda forma de aplicar. Essa propriedade vai para todos os parágafos -->
+        <link rel="stylesheet" href="style.css">
+        <!-- Terceira forma de aplicar. 
+        rel = relacionamento.
+        stlylesheet = folha de estilo.
+        href = endereço de referência. -->
+    </head>
+
+    <body> 
+        <h1 style="text-align: center"> Sobre a Barbearia Alura </h1>
+        
+        <p> Localizada no coração da cidade a <strong>Barbearia Alura</strong> traz para o mercado 
+            o que há de melhor para o seu cabelo e barba. 
+            Fundada em 2019, a Barbearia Alura já é destaque na cidade e conquista novos clientes 
+            a cada dia. </p>
+        
+        <p style="font-size: 20px"><em>Nossa missão é:<strong>"Proporcionar auto-estima e qualidade de vida aos clientes"</strong>.</em></p>
+         
+        <p> Oferecemos profissionais experientes e antenados às mudanças no mundo da moda. 
+            O atendimento possui padrão de excelência e agilidade, garantindo qualidade e satisfação 
+            dos nossos clientes. </p>
+    </body>
+    
+</html>

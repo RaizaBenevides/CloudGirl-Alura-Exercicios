@@ -1,0 +1,32 @@
+<canvas width="600" height="400"> </canvas> <!-- canvas é para criar uma tela em branco -->
+
+<script>
+
+//vamos usar nesse exercício as APIs, que são as bibliotecas em java script
+
+    var tela = document.querySelector('canvas'); //puxando o canvas para o java script.No mundo java script pode usar tanto aspas duplas quanto aspas simples
+    var pincel = tela.getContext('2d'); //pedindo pra tela um pincel para escrever em 2d
+
+    pincel.fillStyle = 'lightgrey'; //preenchendo com cor (tem que colorir antes de preencher o retângulo//não é uma função, é como se fosse uma variável, ou seja, recebe uma atribuição
+    pincel.fillRect (0,0,600,400); //pedindo para o pincel desenhar um retângulo na tela criada (vai preencher todo na cor preta) // 0,0 início das coordenadas do retângulo //600,400 é o tamanho do retângulo criado //esses valores não podem passar do tamanho da tela
+
+    pincel.fillStyle = 'green';
+    pincel.fillRect (0,0,200,400);
+
+    pincel.fillStyle = 'red';
+    pincel.fillRect (400,0,200,400);
+
+    pincel.fillStyle = 'yellow';
+    pincel.beginPath (); //começar a figura, vamos fazer um triângulo amarelo
+    pincel.moveTo (300,200); //movendo o pincel para o ponto inicial
+    pincel.lineTo (200,400); //pra onde a linha se move
+    pincel.lineTo (400,400); //pra onde a outra linha se move
+    pincel.fill (); //para finalmente preencher
+
+    pincel.fillStyle = 'blue';
+    pincel.beginPath (); //começar a figura, vamos fazer um círculo azul
+    pincel.arc (300,200,50,0,2*3.14); //300,200 = início do centro //50 = raio //0 = ângulo inicial // 2*3.14 = ângulo final em radianos
+    pincel.fill ();
+
+
+</script>

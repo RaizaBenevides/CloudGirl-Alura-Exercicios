@@ -1,0 +1,24 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+    var tela = document.querySelector ('canvas');
+    var pincel = tela.getContext ('2d');
+
+    pincel.fillStyle = 'grey';
+    pincel.fillRect (0, 0, 600, 400);
+
+    function desenhaCirculo (evento) { 
+        var x = evento.pageX - tela.offsetLeft; //para descontar do valor o espaço em branco da esquerda do valor da coordenada.
+        var y = evento.pageY - tela.offsetTop; //para descontar do valor o espaço em branco de cima do valor da coordenada.
+        
+        pincel.fillStyle = 'blue'; //para fazer bolinhas ao clicar na tela
+        pincel.beginPath();
+        pincel.arc(x, y, 10, 0, 2 * 3.14); //o x e o y são as variáveis criadas acima
+        pincel.fill();
+        
+    }
+
+tela.onclick = desenhaCirculo;
+
+</script>

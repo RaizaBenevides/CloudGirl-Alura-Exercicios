@@ -1,0 +1,50 @@
+<canvas width = "600" height = "400"></canvas>
+
+<script>
+
+/* Fazendo da forma repetitiva, sem utilizar funções:
+
+    var tela = document.querySelector ('canvas');
+    var pincel = tela.getContext ('2d');
+
+    pincel.fillStyle = 'green';
+    pincel.fillRect (0,0,50,50);
+    pincel.fillStroke = 'black'; //definindo a cor da borda ao redor do quadrado
+    pincel.strokeRect (0,0,50,50); //para fazer uma borda ao redor do quadrado
+
+    pincel.fillRect (50,0,50,50);
+    pincel.strokeRect (50,0,50,50);
+
+    pincel.fillRect (100,0,50,50);
+    pincel.strokeRect (100,0,50,50);
+*/
+
+    function desenhaQuadrado (x,y,cor) {
+
+        var tela = document.querySelector ('canvas');
+        var pincel = tela.getContext ('2d');
+
+        pincel.fillStyle = cor;
+        pincel.fillRect (x,y,50,50);
+        pincel.fillStroke = 'black'; //definindo a cor da borda ao redor do quadrado
+        pincel.strokeRect (x,y,50,50); //para fazer uma borda ao redor do quadrado
+        
+    }
+
+    
+    desenhaQuadrado (0,0, 'green'); //chamando a função
+    desenhaQuadrado (50,0, 'green');
+    desenhaQuadrado (100,0, 'green');
+
+/* OBS:
+
+Quando não definimos a cor do stroke a cor padrão utilizada é black. 
+No entanto, para mudarmos a cor do stroke para uma cor diferente de preto, precisamos realizar essa 
+operação através da propriedade strokeStyle. Exemplo:
+
+pincel.strokeStyle = 'red'
+
+*/
+
+
+</script>

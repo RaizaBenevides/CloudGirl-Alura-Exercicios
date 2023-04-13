@@ -1,0 +1,27 @@
+<meta charset = "UTF-8">
+
+<script>
+
+    function pulaLinha() {
+        document.write("<br><br>");
+    }
+
+    function mostra(frase) {
+        document.write(frase);
+        pulaLinha();
+    }
+
+    var numeroPensado = Math.round(Math.random() * 10); 
+    //Math.random gera números aleatórios, mas eles são, por exemplo, assim: 0.57839 (por isso tem que multiplicar por 10 e arredondar o resultado com o Math.round). Se eu quisesse chutar números de 0 a 100, iríamos multiplicar por 100, e assim por diante.
+    console.log(numeroPensado); 
+    //Comando para exibir no console (F12) o número que foi gerado. Serve para testar o programa (se acertando o número o programa vai exibir a mensagem de acerto).
+
+    var chute = parseInt(prompt("Digite seu chute!"));
+
+    if (chute == numeroPensado) {
+        mostra ("Você acertou!");
+    } else { //else = senão. Notar que o comando else não tem parenteses, somente travesão.
+        mostra ("Você errou, o número pensado foi " + numeroPensado);
+    }
+
+</script>

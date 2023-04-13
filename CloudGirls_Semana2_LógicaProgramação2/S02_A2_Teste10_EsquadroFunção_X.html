@@ -1,0 +1,52 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+    function desenhaEsquadro (xa, ya, xc, yc, cor) { 
+        var tela = document.querySelector('canvas');
+        var pincel = tela.getContext('2d');
+        
+        pincel.fillStyle = cor;
+        pincel.beginPath();
+        pincel.moveTo(xa, ya); //ponto A
+        pincel.lineTo(xa, yc); //ponto B //xb=xa e yb=yc //(xb,yb)=(xa,yc)
+        pincel.lineTo(xc, yc); //ponto C
+        pincel.fill();
+
+    }
+
+    desenhaEsquadro (50, 50, 400, 400, 'black');
+    desenhaEsquadro (100, 175, 275, 350, 'white');
+
+/* Forma de fazer, segundo o professor (não entendi muito bem a lógica de fazer assim):
+
+    var tela = document.querySelector('canvas');
+    var pincel = tela.getContext('2d');
+
+    function desenhaEsquadro(xa, ya, xc, yc, cor) {
+        pincel.fillStyle = cor
+        pincel.beginPath();
+        pincel.moveTo(xa, ya);
+        pincel.lineTo(xa, yc);
+        pincel.lineTo(xc, yc);
+        pincel.fill();
+        
+        pincel.fillStyle = 'white' //dessa forma sempre teremos um triângulo branco dentro de um triângulo com qualquer cor
+        pincel.beginPath();
+        pincel.moveTo((6 * xa + xc) / 7, (9 * ya + 5 * yc) / 14);
+        pincel.lineTo((6 * xa + xc) / 7, (ya + 6 * yc) / 7);
+        pincel.lineTo((5 * xa + 9 * xc) / 14, (ya + 6 * yc) / 7);
+        pincel.fill();
+  }
+    
+    desenhaEsquadro(50, 50, 400, 400, 'black');
+
+OBS: Para chegar às coordenadas internas como (100,350) , ele usa uma logica meio doida ! 
+Importante ressaltar que a multiplicacao e divisao ocorrem antes da soma ou subtracao se nao estiverem separada por parenteses. 
+Neste caso ele faz (6*xa+xc)/7 , isso vai ser igual a (6*50 +400)/7 , que é igual a (300+400)/7 
+que é igual a 700/7 = 100. Logo ele conseguiu chegar a coordenada x=100. 
+Agora ele faz a mesma coisa para Y. (9*ya +5*yc)/14 = (9*50 +5*400)/14 = (450+2000)/14= (2450)/14= 175. 
+Ou seja , através de todos esses calculos chegamos a x,y = (100,175).
+*/
+
+</script>

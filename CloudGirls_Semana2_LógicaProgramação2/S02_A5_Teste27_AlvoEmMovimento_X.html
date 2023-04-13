@@ -1,0 +1,58 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+    var tela = document.querySelector ('canvas');
+    var pincel = tela.getContext ('2d');
+    
+    pincel.fillStyle = 'lightgrey';
+    pincel.fillRect (0,0,600,400);
+
+    var raio = 10;
+    var xAleatorio; //x do alvo. //declarada fora da função atualizaTela para a função dispara ter acesso tbm.
+    var yAleatorio; //y do alvo. //declarada fora da função atualizaTela para a função dispara ter acesso tbm.
+
+    function desenhaCirculo (x, y, raio, cor) {
+        pincel.fillStyle = cor;
+        pincel.beginPath ();
+        pincel.arc (x, y, raio, 0,2 * Math.PI);
+        pincel.fill ();
+    }
+    
+    function limpaTela () {
+        pincel.clearRect (0, 0, 600, 400);
+    }
+
+    function desenhaAlvo (x, y) {
+        desenhaCirculo (x, y, raio+20, 'red');
+        desenhaCirculo (x, y, raio+10, 'white');
+        desenhaCirculo (x, y, raio, 'red');
+    }
+
+    function sorteiaPosição (maximo) {
+        return Math.floor (Math.random() * maximo); //pra conseguir um número x de 0 a 600 e y de 0 a 400.
+        //Math.floor é parecido com o Math.round, só que arredonda pra baixo.
+    }
+
+    function atualizaTela () {
+        limpaTela ();
+        xAleatorio = sorteiaPosição (600); //tiramos a variável daqui de dentro da função para a função dipara ter acesso tbm.
+        yAleatorio = sorteiaPosição (400); //tiramos a variável daqui de dentro da função para a função dipara ter acesso tbm.
+        desenhaAlvo(xAleatorio,yAleatorio);
+    }
+ 
+    setInterval (atualizaTela, 1000);
+
+    function dispara (evento) { //acessar a posição do clique do mouse.
+        var x = evento.pageX - tela.offsetLeft;
+        var y = evento.pageY - tela.offsetTop;
+        //alert (xAleatorio); //informa a posição x alvo.
+        //alert (yAleatorio); //informa a posição y do alvo.
+        if ( (x > xAleatorio-raio) && (x < xAleatorio+raio) && (y > yAleatorio-raio) && (y < yAleatorio+raio) ) {
+            alert ('Acertou');
+        }
+    }
+
+    tela.onclick = dispara; //não tem (). //quando clicamos na tela, a função dipara roda.
+
+</script>

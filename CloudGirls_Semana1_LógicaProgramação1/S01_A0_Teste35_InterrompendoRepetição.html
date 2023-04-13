@@ -1,0 +1,40 @@
+<meta charset="UTF-8">
+
+<script>
+
+    function pulaLinha() {
+
+        document.write("<br>");
+        document.write("<br>");
+    }
+
+    function mostra(frase) {
+
+        document.write(frase);
+        pulaLinha();
+    }
+
+    var numeroPensado = Math.round(Math.random() * 10);
+
+    var tentativas = 1; //contador
+
+    while (tentativas <= 3) {
+
+        var chute = parseInt(prompt("Digite seu chute!"));
+
+        if(chute == numeroPensado) {
+
+            mostra("Você ACERTOU, o número pensado era " + numeroPensado);
+            break; //break serve para quebrar o loop, mas outra opção seria colocar "tentativas = 4" (qualquer número maior que 3 resolveria, já que essa é a condição do while).
+
+        } else {
+
+            mostra("Você ERROU!");
+        }
+
+        tentativas++;
+    }
+
+    mostra("FIM");
+
+</script>

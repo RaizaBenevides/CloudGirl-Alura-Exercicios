@@ -1,0 +1,42 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+    var tela = document.querySelector ('canvas');
+    var pincel = tela.getContext ('2d');
+
+    pincel.fillStyle = 'grey';
+    pincel.fillRect (0, 0, 600, 400);
+
+/*
+    function exibeAlerta (evento) { //colocamos o nome evento (o nome não importa na verdade) dentro da função, pois toda função tem alguns parâmetros definidos dentro dela que não nos são mostrados.
+        alert ('Cliquei');
+        console.log (evento); //vamos ter acesso, dentro do console, aos parâmetros da função.
+    }
+
+// se simplesmente chamasse a função exibeAlerta (), iria aparecer a mensagem antes de clicar na tela.
+
+//agora o objetivo é exibir as coordenadas do mouse ao clicar na tela:
+
+    function exibeAlerta (evento) { //colocamos o nome evento (o nome não importa na verdade) dentro da função pois toda função tem alguns parâmetros definidos dentro dela que não nos são mostrados.
+        
+        var x = evento.pageX; //vamos ter acesso ao parâmetro pageX  (coordenada x).
+        var y = evento.pageY; //vamos ter acesso ao parâmetro pageY  (coordenada y).
+
+        alert(x + ", " + y);; //exibe as coordenadas ao clicar na tela
+    }
+*/ 
+
+//agora o objetivo é criar círculos ao clicar na tela:
+
+    function exibeAlerta (evento) { 
+        
+        var x = evento.pageX - tela.offsetLeft; //para descontar do valor o espaço em branco da esquerda do valor da coordenada.
+        var y = evento.pageY - tela.offsetTop; //para descontar do valor o espaço em branco de cima do valor da coordenada.
+        
+        alert("posição do clique : " + x + ", " + y);
+    }
+
+tela.onclick = exibeAlerta;
+
+</script>

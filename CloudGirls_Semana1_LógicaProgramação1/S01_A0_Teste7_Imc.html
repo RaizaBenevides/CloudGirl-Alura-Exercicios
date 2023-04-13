@@ -1,0 +1,37 @@
+<meta charset = "UTF-8">
+
+<script>
+
+	function pulaLinha() {
+		document.write("<br><br>");
+	}
+
+	function mostra(frase) {
+		document.write(frase);
+		pulaLinha();
+	}
+
+	/* Forma de fazer sem função calculaImc
+
+	var pesoRaiza = 46;
+	var alturaRaiza = 1.54;
+	var imcRaiza = Math.round (pesoRaiza / (alturaRaiza * alturaRaiza));
+	mostra ("O IMC da Raiza é: " + imcRaiza);
+
+	var pesoPh = 80;
+	var alturaPh = 1.80;
+	var imcPh = Math.round (pesoPh / (alturaPh * alturaPh));
+	mostra ("O IMC da Raiza é: " + imcPh); 
+	*/
+
+	// Fazendo por função
+
+	function calculaImc(peso, altura) {
+		var imc = Math.round (peso / (altura * altura));
+		mostra("O IMC calculado é: " + imc);
+	}
+
+	calculaImc(46, 1.54);
+	calculaImc(80,1.8);
+
+</script>

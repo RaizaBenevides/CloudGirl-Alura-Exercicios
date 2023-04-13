@@ -1,0 +1,36 @@
+<meta charset="UTF-8">
+
+<script>
+
+    function pulaLinha() {
+        document.write("<br>");
+    }
+
+    function mostra(frase) {
+
+        document.write(frase);
+        pulaLinha();
+    }
+
+/* Para mostrar 3 linhas de 10: 
+
+    for(var linha = 1; linha <= 3; linha++) {
+
+        mostra("**********");
+
+    }
+*/
+
+// Para fazer os 10 asteriscos sem escrever cada um:
+
+    for (var linha = 1; linha <= 3; linha++) {
+
+        for (coluna = 1; coluna <= 10; coluna++) {
+            document.write ("*"); //não usa o mostra() pq ele vai pular linha entre cada asterisco compondo o grupo de 10
+        }
+
+    pulaLinha(); //após resolvido o for() das linhas, pula uma linha
+    
+    }
+
+</script>

@@ -1,0 +1,41 @@
+<meta charset="UTF-8">
+
+<script>
+
+    function pulaLinha() {
+
+        document.write("<br>");
+        document.write("<br>");
+    }
+
+    function mostra(frase) {
+
+        document.write(frase);
+        pulaLinha();
+    }
+
+    var vitorias = parseInt(prompt ("Entre com o número de vitórias.")); 
+    var empates = parseInt(prompt ("Entre com o numero de empates.")); 
+    var pontos = 3 * vitorias + empates; 
+    
+    mostra ("Os pontos do seu time é: " + pontos);
+
+    //O comando if() mostra SE a resposta for true, se for false, não mostra
+
+    if (pontos > 28) { //Se eu colocasse if(true), já iria validar esta frase independete da pontuação; 
+        mostra ("Seu time está melhor que ano passado.");
+    }
+    
+    
+    if (pontos < 28) { //Se eu colocasse if(false), já iria invalidar a frase independete da pontuação.
+        mostra ("Seu time está pior que ano passado.");
+    }
+    
+    
+    if (pontos == 28) { // Tem que colocar dois símbolos de igual, pois só um significa "receber"
+        mostra ("Seu time está igual ao ano passado.");
+    }
+
+    mostra ("FIM");
+    
+</script>

@@ -1,0 +1,31 @@
+<meta charset="UTF-8">
+
+<script>
+
+    function pulaLinha() {
+
+        document.write("<br>");
+        document.write("<br>");
+    }
+
+    function mostra(frase) {
+
+        document.write(frase);
+        pulaLinha();
+    }
+
+    /*
+    O comando prompt sempre retorna como texto, então, se somar um número com outro, vai ler como concatenação (9+1=91), mas se for outra operação (divisão ou multiplicação, por exemplo, ele vai usar como se fosse número (3*2=6))
+    var vitorias = prompt ("Entre com o número de vitórias."); //=3
+    var empates = prompt ("Entre com o numero de empates."); //=1
+    var pontos = 3 * vitorias + empates; //3*3 + 1 = 9 + 1 = 91 (concatenação de strings)
+    */
+
+    //parseInt comando para transformar texto em número (no caso dos números em forma de string). Ex: parseInt("10") = 10
+    var vitorias = parseInt(prompt ("Entre com o número de vitórias.")); //=3
+    var empates = parseInt(prompt ("Entre com o numero de empates.")); //=1
+    var pontos = 3 * vitorias + empates; //3*3 + 1 = 9 + 1 = 10
+    
+    mostra ("Os pontos do seu time é: " + pontos);
+
+</script>

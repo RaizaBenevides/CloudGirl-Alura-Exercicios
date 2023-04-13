@@ -1,0 +1,25 @@
+<meta charset = "UTF-8">
+
+<script>
+
+    function pulaLinha() {
+        document.write("<br><br>");
+    }
+
+    function mostra(frase) {
+        document.write(frase);
+        pulaLinha();
+    }
+
+    var quantidadeCarbono1 = parseInt (prompt ("Quantidade de carbono na substância 1"));
+    var quantidadeCarbono2 = parseInt (prompt ("Quantidade de carbono na substância 2"));
+    quantidadeCarbono2 = quantidadeCarbono2 + 2 
+    // Esse passa a ser o novo valor da quantidadeCarbono2. Notar que não precisa criar uma nova variável. O próprio nome já diz, por ser variável, podemos a qualquer hora mudar seu valor. Poderíamos tbm simplesmente somar esse número na própria variávelda linha 15: var quantidadeCarbono2 = parseInt (prompt ("Quantidade de carbono na substância 2")) + 2;
+
+    if (quantidadeCarbono1 == quantidadeCarbono2) {
+        mostra ("Acho que são substâncias parecidas.");
+    } else {
+        mostra ("São substâncias bem diferentes.");
+    }
+
+</script>

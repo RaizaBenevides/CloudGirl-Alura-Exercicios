@@ -1,0 +1,50 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+    var tela = document.querySelector('canvas');
+    var pincel = tela.getContext('2d');
+
+    pincel.fillStyle = 'lightgray';
+    pincel.fillRect(0, 0, 600, 400);
+
+    function desenhaCirculo (x, y, raio) {
+        pincel.fillStyle = 'blue';
+        pincel.beginPath ();
+        pincel.arc (x, y, raio, 0, 2 * Math.PI); //Math.PI = 3.14
+        pincel.fill ();
+    }
+
+    function limpaTela () {
+        pincel.clearRect (0, 0, 600, 400); //limpar, apagar a tela.A cada vez que a bolinha muda de posição, apaga-se o anterior (nesse caso, apaga o fundo cinza tbm).
+    }
+/*
+O 'for' é muito rápido, recarregando a página, veremos já a última bolinha no final da tela, tem que esperar uns segundos em cada posição da bolinha, pro olho humano conseguir enxergar.
+    
+    for (var x=20; x<580; x++) {
+        limpaTela();
+        desenhaCirculo (x, 20, 10);
+    }
+
+Para exibir uma mensagem de tantos em tantos segundos:
+    
+    function exibeMensagemNoConsole () {
+        console.log ('Chamei função'); //para exibir essa mensagem no console.
+    }
+    
+    setInterval (exibeMensagemNoConsole, 1000); //comando para chamar algo durante certo tempo.
+
+//notar que exibeMensagemNoConsole não tem (), então não está executando a função e sim trazendo a função pra dentro dela.
+//1000 é a quantidade de milisegundos, nesse caso, 1 segundo.
+*/
+    var x = 20;
+
+    function atualizaTela () {
+        limpaTela ();
+        desenhaCirculo (x, 20, 10);
+        x++;
+    }
+
+    setInterval (atualizaTela, 10);
+
+</script>

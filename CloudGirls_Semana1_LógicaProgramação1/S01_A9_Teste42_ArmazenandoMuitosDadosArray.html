@@ -1,0 +1,41 @@
+<meta charset="UTF-8">
+
+<input/>
+<button>Compare com o meu segredo</button>
+
+<script>
+
+    var segredos = [5,7,10,2]; //isso é um array, um conjunto de números, no caso, um conjunto de segredos para o jogo de adivinhação, ou seja, não teremos só um número para acertar, mas quatro (basta acertar um deles para dar certo). Em um array as posições são essas [posição 0, posição 1, posição 2, posição 3, ... ].
+
+    var input = document.querySelector("input");
+    input.focus();
+
+    function verifica() {
+
+        var achou = false;
+
+        for (var posicao = 0; posicao < segredos.length; posicao++) { //segredos.length é para não importar o tamanho do array. Nesse caso só temos 4 números, então resolveria se colocássemos "posicao < 4", mas não daria certo caso aumetássemos a quantidade de números (teríamos que ficar alterando aqui também). Muito cuidado para não escrever codigos.lenght, caso contrário você terá problemas, pois o resultado será undefined.
+
+            if (input.value == segredos[posicao]) { //essa parte não entendi. Não entendi a lógica desses true e false tbm.
+
+                alert ("Você ACERTOU!");
+                achou = true;
+                break;
+        
+            }
+        }
+
+        if (achou == false) {
+
+            alert ("Você ERROU!");
+        } 
+
+        input.value = ""; 
+        input.focus();
+    }
+
+    var button = document.querySelector ("button");
+    button.onclick = verifica;
+
+</script>
+

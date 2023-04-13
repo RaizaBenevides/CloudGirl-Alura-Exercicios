@@ -1,0 +1,41 @@
+<meta charset="UTF-8"*>
+
+<input/>
+<button> Compare com o meu segredo </button>
+
+<script>
+
+    var segredo = 5
+
+    var input = document.querySelector("input"); //pega a variável lá do mundo html e joga pra cá (java script)
+    //esse nome da variável "var input" pode ser qualquer um, o que tem que ser igual é a tag dentro do comando querySelector().
+    
+/* Temos que colocar essas condições dentro de uma função (para chamar quando quisermos), pois se não colocarmos, vai dizer que erramos assim que carregamos a página e antes mesmo de clicarmos no botão
+
+    if (input.value == segredo) { //input.value é o valor do input
+
+        alert ("Você ACERTOU!");
+    
+    } else {
+
+        alert ("Você ERROU!");
+    }
+*/
+
+    funtion verifica() {
+
+        if (input.value == segredo) { //input.value é o valor do input
+
+            alert ("Você ACERTOU!");
+        
+        } else {
+
+            alert ("Você ERROU!");
+        }
+    }
+
+    var button = document.querySelector ("button"); //pega a variável lá do mundo html e joga pra cá (java script)
+    button.onclick = verifica; //button.onclick é ao clicar no botão. Chama a função ao clicar no botão (e só resolve depois de clicar no botão). Se fosse button.onclick = verifica() iria executar a função (já daria a resposta se acertamos ou não), não chamar, então tomar cuidado com essa diferença.
+
+
+</script>

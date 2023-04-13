@@ -1,0 +1,124 @@
+<meta charset="UTF-8">
+
+<input/>
+<button>Compare com o meu segredo</button>
+
+<script>
+
+/* formas de adicionar itens no array.
+    
+    var segredos = [5,7,10,2];
+
+ou (tirando os itens da variável segredos):
+    
+    var segredos = [];
+    segredos.push (5); //o push empurra o valor na variável segredos.
+    segredos.push (7);
+    segredos.push (10);
+    segredos.push (2);
+
+ou (gerando números aleatórios):
+    
+    var segredos = [];
+    segredos.push (Math.round(Math.random() * 10));
+    segredos.push (Math.round(Math.random() * 10));
+    segredos.push (Math.round(Math.random() * 10));
+    segredos.push (Math.round(Math.random() * 10));
+
+ou (criando uma função para os números aleatórios):
+    
+    function sorteia() {
+        return Math.round(Math.random() * 10);
+    }
+    var segredos = [];
+    segredos.push (sorteia);
+    segredos.push (sorteia);
+    segredos.push (sorteia);
+    segredos.push (sorteia);
+*/
+
+// ou (criando uma função para a quantidade de números aleatórios gerados):
+
+    function sorteia() {
+        
+        return Math.round(Math.random() * 10);
+    }
+
+    function sorteiaNumeros (quantidade) {
+        
+        var segredos = []; //Apesar de ser o mesmo nome da variável externa (abaixo), quanlquer variável só existe dentro da função (então pode repetir o nome).
+
+        var numero = 1; //contador
+
+/* Dessa forma os números gerados podem se repetir:
+
+        while (numero <= quantidade) {
+            
+            segredos.push (sorteia()); //empurra o valor gerado da função sorteira (um número aleatório)
+            numero++;
+        }
+*/
+
+        while (numero <= quantidade) {
+            
+            var numeroAleatorio = sorteia();
+
+            if (numeroAleatorio !== 0) { //pra tirar o zero da lista de números.
+                
+                var achou = false;
+
+                for (var posicao = 0; posicao < segredos.length; posicao++) {
+
+                    if (segredos[posicao] == numeroAleatorio) {
+                        achou = true;
+                        break;
+                    }
+                }
+
+                if (achou == false) { //se achou é igual a falso = se não achou.
+                    segredos.push (numeroAleatorio); //se não achou eu chamo aqui.
+                    numero++;
+                }
+            }            
+        }
+
+        return segredos;
+    }
+
+//restante do código é igual ao teste passado (Teste42).
+    
+    var segredos = sorteiaNumeros(4); //recebe a quantidade de números aleatórios 
+
+    console.log (segredos); //só pra aparecer a lista de números gerados dentro do console.
+    
+    var input = document.querySelector("input");
+    input.focus();
+
+    function verifica() {
+
+        var achou = false;
+
+        for (var posicao = 0; posicao < segredos.length; posicao++) { 
+
+            if (input.value == segredos[posicao]) {
+
+                alert ("Você ACERTOU!");
+                achou = true;
+                break;
+        
+            }
+        }
+
+        if (achou == false) {
+
+            alert ("Você ERROU!");
+        } 
+
+        input.value = ""; 
+        input.focus();
+    }
+
+    var button = document.querySelector ("button");
+    button.onclick = verifica();
+
+</script>

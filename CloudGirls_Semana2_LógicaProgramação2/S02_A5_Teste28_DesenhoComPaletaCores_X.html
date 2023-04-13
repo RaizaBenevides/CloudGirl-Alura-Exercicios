@@ -1,0 +1,157 @@
+<meta charset="UTF-8">
+
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+    function desenhaQuadrado(x, y, tamanho, cor) {
+        pincel.fillStyle = cor;
+        pincel.fillRect(x, y, tamanho, tamanho); //largura=altura=tamanho.
+        pincel.fill();
+    }
+
+    function desenhaCirculo(x, y, raio, cor) {
+        pincel.fillStyle = cor;
+        pincel.beginPath();
+        pincel.arc(x, y, raio, 0, 2 * 3.14);
+        pincel.fill();
+    }
+
+    function desenhaPaletaDeCores() {
+        desenhaQuadrado(xVermelho, yQuadrados, tamanhoQuadrados, 'red');
+        desenhaQuadrado(xVerde, yQuadrados, tamanhoQuadrados, 'green');
+        desenhaQuadrado(xAzul, yQuadrados, tamanhoQuadrados, 'blue');
+    }
+
+    function lidaComMovimentoDoMouse(evento) {
+        var x = evento.pageX - tela.offsetLeft;
+        var y = evento.pageY - tela.offsetTop;
+
+        /*
+        if(desenha) { //inicialmente desenha = false. Não deve desenhar se o mouse estiver se movimentando.
+            desenhaCirculo (x, y, 5, corAtual); //não é só cor pq a cor tem que ficar mudando, de acordo com a cor que escolhemos.
+        }
+        */
+        if (desenha && podeDesenharNaArea(x, y)) { //ver Nota2. //Pq x, y aqui???
+            desenhaCirculo (x, y, 5, corAtual);
+        }
+    }
+
+    function habilitaDesenhar() { //para trocar desenha = true. Só pode habilitar quando clica com o botão do mouse.
+        desenha = true;
+    }
+
+    function desabilitaDesenhar() { //para trocar desenha = false. Só pode desabilitar quando solta o botão do mouse.
+        desenha = false;
+    }
+
+    function podeDesenharNaArea (x, y) { //ver Nota1.
+        if (x >= 0 && x < 3*tamanhoQuadrados && y >= 0 && y < tamanhoQuadrados) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    function selecionaCor (evento) { //ver Nota3.
+        var x = evento.pageX - tela.offsetLeft;
+        var y = evento.pageY - tela.offsetTop;
+        // agora que sei onde o usuário clicou, posso verificar em qual cor da paleta ele esta clicando!
+        // cada condição muda a variável `corAtual`.
+        // começamos pela condição do y que é igual em todos os casos.
+        if (y > yQuadrados && y < yQuadrados + tamanhoQuadrados) { //ver Nota4.
+            if (x > xVermelho && x < xVermelho + tamanhoQuadrados) { //Pq não posso colocar isso dentro do mesmo if???
+                corAtual = 'red';
+            } else
+            if (x > xVerde && x < xVerde + tamanhoQuadrados) {
+                corAtual = 'green';
+            } else
+            if (x > xAzul && x < xAzul + tamanhoQuadrados) {
+                corAtual = 'blue';
+            }
+        }
+    }
+
+    var tela = document.querySelector('canvas');
+    var pincel = tela.getContext('2d');
+    pincel.fillStyle = 'lightgray';
+    pincel.fillRect(0, 0, 600, 400);
+
+    var desenha = false;
+    var corAtual = 'blue';
+    var xVermelho = 0;
+    var xVerde  = 50;
+    var xAzul = 100;
+    var yQuadrados = 0; //Lembrar que é o ponto inicial de inserção dos quadrados.
+    var tamanhoQuadrados = 50;
+
+    desenhaPaletaDeCores(); // mostra os quadrados de seleção de cores
+
+    tela.onmousemove = lidaComMovimentoDoMouse;
+
+    tela.onmousedown = habilitaDesenhar;
+
+    tela.onmouseup = desabilitaDesenhar;
+
+    tela.onclick = selecionaCor; // AQUI! Estou associando a função `selecionaCor` ao evento `onclick` de tela!
+
+/*
+O desafio desse exercício é trocar a cor utilizada para desenhar o círculo de acordo com o quadrado da 
+cor que clicarmos. Se clicarmos no verde, usaremos a cor verde quando formos desenhar e por aí vai. 
+Outro ponto é que não podemos desenhar em cima da nossa paleta, ou melhor, não podemos desenhar na 
+linha inteira na qual faz parte.
+Para solucionar esse problema, você precisará identificar qual quadrado foi clicado, implementando 
+uma lógica de colisão parecida com a que usamos para definir se acertamos um alvo ou não. 
+Veja que como estamos trabalhando com um quadrado, não usamos um raio na lógica de colisão, usamos 
+o tamanho do quadrado, guarde essa dica!
+
+Nota1:
+    O primeiro problema que resolverei será não deixar que alguém desenhe por cima da nossa paleta 
+    de cores. Assumirei que se alguém estiver entre X=0 e X=3*tamanhoQuadrados e entre Y=0 e Y=tamanhoQuadrados 
+    não poderá desenhar, mesmo que pressione o botão do mouse. 
+    Para isso, vou criar uma função chamada podeDesenharNaArea, que retornará true caso seja possível e 
+    false caso não seja. Ela receberá como parâmetro as coordenadas x e y do mouse!
+
+Nota2: 
+    Vamos recapitular várias coisas. Seguindo a convenção de declarar as funções antes de variáveis 
+    em nosso código, declarei podeDesenharNaArea logo após a declaração da última função. 
+    A função recebe como parâmetro as coordenadas x e y, para então retornar true ou false para indicar 
+    que podemos ou não escrever naquela área. Dentro dela temos a lógica que confere os limites.
+
+    Por fim, a função é usada dentro de outra função, a função lidaComMovimentoDoMouse. 
+    Nela, para que seja possível desenhar na tela, a variável desenhar tem que ser true e o retorno de 
+    podeDesenharNaArea também. Por isso ligamos uma condição com a outra através de &&, o equivalente à 
+    conjunção E em português.
+
+    Um ponto que deve ter chamado sua atenção é que a função podeDesenharNaArea foi declarada depois de 
+    lidaComMovimentoDoMouse. Talvez você ache que isso possa dar um erro e que a primeira função deveria 
+    vir após a segunda, mas tudo funcionará perfeitamente.
+
+    Lembre-se que o JavaScript, quando encontra uma função, ele a guarda para que a mesma seja chamada depois. 
+    Então, mesmo que uma função que dependa da outra tenha a função de que depende declarada depois, elas não 
+    serão executadas assim que forem processadas pela JavaScript. Então, assim que o usuário começar interagir 
+    na tela, as duas funções já estão disponíveis e podem ser chamadas pelos eventos, seja do clique de um 
+    botão ou o arrastar de um mouse na tela. Tranquilo?
+
+    Faça alguns testes e veja que você não consegue desenhar por cima das paletas de cores. 
+    Agora falta a lógica de colisão para podermos escolher as cores.
+
+Nota3:
+    Faremos a detecção de qual cor da nossa paleta foi clicada através da função selecionaCor, que será 
+    associada ao evento onclick da nossa tela. Primeiro vou declarar a função sem instruções dentro do 
+    seu bloco, e vou associá-la ao evento onclick da tela.
+
+Nota4:
+    Agora vamos implementar a lógica de colisão. Irei explicar a lógica para o quadrado vermelho, a 
+    restante é idêntica. Se o usuário clicar em 15x e 20y, vamos testar se o x é maior que xVermelho, 
+    que é a posição do eixo x do quadrado vermelho. Mas não podemos testar apenas se é maior, ele deve 
+    ser maior que xVermelho e menor que xVermelho somado do tamanho do quadrado. Como todos os quadrados 
+    possuem o mesmo tamanho, usamos a variável tamanhoQuadrados. Mas comparar o 15x do clique do mouse 
+    não é suficiente, temos que saber se 20y está dentro do quadro. Para isso, comparamos se 20y é maior 
+    que yQuadrados. Todos os quadrados possuem o mesmo valor da coordenada y. Tinha que ser assim, razão 
+    pela qual temos um quadrado ao lado do outro e não um embaixo do outro. E por fim, comparamos se 20y 
+    é maior que yQuadrados e menor de tamanhoQuadrados.
+
+*/
+
+</script>

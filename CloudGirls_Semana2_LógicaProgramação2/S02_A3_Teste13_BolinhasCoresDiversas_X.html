@@ -1,0 +1,40 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+    var tela = document.querySelector ('canvas');
+    var pincel = tela.getContext ('2d');
+
+    pincel.fillStyle = 'grey';
+    pincel.fillRect (0, 0, 600, 400);
+
+    var cores = ['blue', 'red', 'green']; //criando um array com as cores que vamos mudar da bolinha a cada clique
+    var indiceCorAtual = 0; //começa com o blue.
+
+    function desenhaCirculo (evento) { 
+        var x = evento.pageX - tela.offsetLeft;
+        var y = evento.pageY - tela.offsetTop;
+        console.log(x + ',' + y); //pq???
+        
+        pincel.fillStyle = cores[indiceCorAtual]; 
+        pincel.beginPath();
+        pincel.arc(x, y, 10, 0, 2 * 3.14); 
+        pincel.fill();
+    }
+
+    tela.onclick = desenhaCirculo;
+
+//Não entendi muito bem a partir daqui
+//O código não volta pra cor azul
+
+    function mudaCor () {
+        indiceCorAtual++;
+        if (indiceCorAtual >= cores.lenght) {
+            indiceCorAtual = 0; //volta para a primeira cor, azul.
+        }
+        return false; //para não exibir o menu padrão do canvas.
+    }
+    
+    tela.oncontextmenu = mudaCor;
+
+</script>

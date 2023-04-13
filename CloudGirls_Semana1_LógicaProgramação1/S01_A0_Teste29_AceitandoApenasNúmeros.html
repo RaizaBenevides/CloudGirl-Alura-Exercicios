@@ -1,0 +1,34 @@
+<meta charset="UTF-8">
+
+<script>
+
+/* A ideia de Daniel é que enquanto o usuário não digitar um número, deve ser mostrado um aviso pedindo para que a idade seja digitada. Aprendemos que while é uma maneira de repetir instruções, em nosso caso, queremos repetir a leitura do teclado. Assim, Daniel escreveu o seguinte código:
+
+    var idade = parseInt(prompt("Digite sua idade"));
+
+    while (idade == NaN) { // NaN: Not a Nuber (um texto, por exemplo).
+        
+        idade = parseInt(prompt("Digite sua idade"));    
+    }
+
+    alert(idade);
+
+Agora, quando o usuário digitar "Calopsita" idade será NaN. Portanto, a condição de repetição do while será a idade ser NaN. Perfeito! Mas estranhamente essa solução não funcionará!
+
+Daniel verificou que se ele digitar qualquer coisa, seja um texto como "Calopsita" ou um número", o laço do while nunca é executado. Ele esta quase solucionando o problema, mas tem um detalhe, não podemos comparar nenhum valor, como NaN, usando ==. Se você abrir seu console agora e escrever NaN == NaN isso será falso! Esse resultado bizarro é uma característica da linguagem.
+
+Para saber se um valor é NaN precisamos usar uma função específica, a isNaN. Essa função recebe um parâmetro e retorna true ou false caso o valor seja NaN ou não.
+
+Sabendo que a função isNaN recebe um parâmetro e retorna true caso o parâmetro passado seja NaN, qual das opções abaixo altera corretamente o código de Daniel para usar a função isNaN?
+
+*/
+
+    var idade = parseInt(prompt("Digite sua idade"));
+
+    while ( isNaN(idade) ) { // Outra forma seria fazer isNaN(idade) == true, mas não é necessário testar se true é igual a true, o resultado será true. É por isso que passamos direto para o while isNan(idade) que retorna já verdadeiro ou falso.
+        idade = parseInt(prompt("Digite sua idade"));    
+    }
+
+    alert(idade);
+
+</script>
