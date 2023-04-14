@@ -9,8 +9,7 @@ botaoAdicionar.addEventListener("click", function(event){
     var form = document.querySelector("#form-adiciona"); //selecionando o form html no mundo do js
     var paciente = obtemPacienteDoFormulario (form);
 
-    //criando a tr e a td pra cada paciente:
-    var pacienteTr = montaTr(paciente);
+    
 
     var erros = validaPaciente (paciente);
 
@@ -19,15 +18,18 @@ botaoAdicionar.addEventListener("click", function(event){
         return; //aqui ele retorna e não executa os comandos abaixo para não adicionar o paciente na tabela
     }
 
-    //adicionando o paciente na tabela
-    var tabela = document.querySelector("#tabela-pacientes");
-
-    tabela.appendChild(pacienteTr); //levamos a tr que criamos para a tabela que já existia no html
+    adicionaPacienteNaTabela(paciente);
 
     form.reset (); //para limpar os campos de preenchimento após apertar o botão
     var mensagensErro = document.querySelector ("#mensagens-erro");
     mensagensErro.innerHTML = " "; //obtemos o conteúdo interno da html, nesse caso, da ul mansagens-erro e substitui por vazio, limpando os textos
 });
+
+function adicionaPacienteNaTabela(paciente) {
+    var pacienteTr = montaTr(paciente); //criando a tr e a td pra cada paciente:
+    var tabela = document.querySelector("#tabela-pacientes"); //adicionando o paciente na tabela
+    tabela.appendChild(pacienteTr);//levamos a tr que criamos para a tabela que já existia no html
+}
 
 function exibeMensagensDeErro (erros) {
     var ul = document.querySelector ("#mensagens-erro");
